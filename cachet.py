@@ -143,7 +143,7 @@ def _build_args(obj, method, **kwargs):
                 args[k] = kwargs[k]
         elif k in kwargs:
             args[k] = kwargs[k]
-        elif 'default' in config:
+        elif 'default' in config and config['default']:
             args[k] = config['default']
 
     return {'res': True, 'data': args }
@@ -565,7 +565,7 @@ def add_incident(api_url=None, api_token=None, **kwargs):
     status = args['status']
     _check_incident_status(status)
 
-    if 'component_status' in args:
+    if 'component_status' in args and args['component_status']:
         _check_component_status(args['component_status'])
 
     function = 'incidents'
